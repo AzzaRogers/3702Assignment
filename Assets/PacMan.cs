@@ -33,6 +33,12 @@ public class PacMan : MonoBehaviour
             moveX = inputX;
             moveY = inputY;
         }
+        if (moveX < 0 || moveX > 0 ) {
+            moveY = 0;
+        }
+        if (moveY < 0 || moveY > 0) {
+            moveX = 0;
+        }
 
         // move player
         transform.Translate(moveX * moveSpeed *  Time.deltaTime, 0.0f, moveY * moveSpeed * Time.deltaTime, Space.World);
