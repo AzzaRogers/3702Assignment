@@ -17,9 +17,17 @@ public class PacMan : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision)
-    {
-        moveX = 0.0f;
-        moveY = 0.0f;
+    {        
+        if (collision.gameObject.CompareTag("coin")) { 
+            Debug.Log("Collided with " + collision.gameObject.tag);
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("wall")) {
+            Debug.Log("Collided with " + collision.gameObject.tag);
+            moveX = 0.0f;
+            moveY = 0.0f;
+        } else if (collision.gameObject.CompareTag("Ghost")) {
+            Destroy(gameObject);
+        } 
     }
 
     // Update is called once per frame
